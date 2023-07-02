@@ -31,9 +31,7 @@ module.exports = {
             console.log(thought);
 
             const updateUser = await User.findOneAndUpdate({ username: req.body.username }, {$push: {thoughts: thought}})
-            // .populate('thoughts').exec();
-            // , {$push: { thought } }, {new: true });
-
+            
             res.json(updateUser);
         }
         catch (err) {
@@ -66,10 +64,16 @@ module.exports = {
 
     async createReaction(req, res) {
         try {
-            const reaction = await Reaction.create({ _id: req.params.thoughtId}, { $set: req.body }, { new: true });
-            res.json(reaction)
+            const reaction = (req.body);
+            console.log(req.body)
+           
+            const newReaction = await Thought.findOneAndUpdate({ username: req.body.username}, { $addToSet: {reactions: reaction} }, { new: true });
+
+            res.json(newReaction)
+            console.log("reaction added")
         }
         catch (err) {
+            console.log(err)
             res.status(500).json(err)
         }
     },
