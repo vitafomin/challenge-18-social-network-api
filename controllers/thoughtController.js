@@ -28,9 +28,16 @@ module.exports = {
     async createThought(req, res) {
         try {
             const thought = await Thought.create(req.body);
-            res.json(thought)
+            console.log(thought);
+
+            const updateUser = await User.findOneAndUpdate({ username: req.body.username }, {$push: {thoughts: thought}})
+            // .populate('thoughts').exec();
+            // , {$push: { thought } }, {new: true });
+
+            res.json(updateUser);
         }
         catch (err) {
+            console.log(err);
             res.status(500).json(err);
         }
     },
@@ -38,6 +45,7 @@ module.exports = {
     async updateThought(req, res) {
         try {
             const newThought = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $set: req.body }, {new: true });
+            res.json(newThought)
         }
         catch (err) {
             console.log(err)

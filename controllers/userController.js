@@ -15,8 +15,9 @@ module.exports = {
 
     async getSingleUser(req, res) {
         try {
-            const user = await User.findOne({ _id: req.params.userId }).populate({ select: "-__v", path: "friends"}).populate({ select: "-__v", path: "thoughts"})
-            //    .select("-__v").populate('friends').populate('thoughts')
+            const user = await User.findOne({ _id: req.params.userId })
+               .select("-__v").populate({ path: "thoughts" })
+            //    .populate('thoughts')
 
             if (!user) {
                 return res.status(404).json({ message: "User Not Found!" })
