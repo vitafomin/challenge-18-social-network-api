@@ -80,10 +80,12 @@ module.exports = {
 
     async deleteReaction(req, res) {
         try {
-            const reaction = await Reaction.findOneAndUpdate({ _id: req.params.thoughtId }, { $pull: {reaction: req.params.reactionId } }, {new: true });
+            const reaction = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $pull: {reactions: {_id: req.params.reactionId } } }, { runValidators: true }, {new: true });
+
             res.json(reaction);
         }
         catch (err) {
+            console.log(err)
             res.status(500).json(err);
         }
     },
