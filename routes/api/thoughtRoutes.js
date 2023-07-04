@@ -1,3 +1,4 @@
+// All the thought routes are in this file
 const router = require("express").Router();
 const {
   getThoughts,

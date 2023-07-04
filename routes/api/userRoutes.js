@@ -1,3 +1,4 @@
+// All the user routes are in this file
 const router = require("express").Router();
 const {
   getUsers,

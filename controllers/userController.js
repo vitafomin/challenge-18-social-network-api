@@ -1,6 +1,8 @@
+// The routes for the user routes
 const { User, Thought, Reaction } = require("../models");
 
 module.exports = {
+// Here we are getting all the users
   async getUsers(req, res) {
     try {
       const users = await User.find();
@@ -12,6 +14,7 @@ module.exports = {
     }
   },
 
+// Here we are getting a single user
   async getSingleUser(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId })
@@ -28,7 +31,7 @@ module.exports = {
       return res.status(500).json(err);
     }
   },
-
+// Here we are creating a user
   async createUser(req, res) {
     try {
       const user = await User.create(req.body);
@@ -37,7 +40,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-
+// Here are are updating a user
   async updateUser(req, res) {
     try {
       const newUser = await User.findOneAndUpdate(
@@ -53,7 +56,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-
+// Here we are deleting a user
   async deleteUser(req, res) {
     try {
       const user = await User.findOneAndRemove({ _id: req.params.userId });
@@ -63,7 +66,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-
+// Here were are adding a friend into the user model
   async addFriend(req, res) {
     try {
       const user = await User.findOneAndUpdate(
@@ -77,7 +80,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-
+// Here we are deleting a friend from the user model
   async deleteFriend(req, res) {
     try {
       const user = await User.findOneAndUpdate(
