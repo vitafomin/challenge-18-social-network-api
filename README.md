@@ -15,6 +15,8 @@ For this application to work you need to have express and mongoose installed.
 ## Usage
 
 This is a great application for anyone that is looking to handle large amouts of unscructured data, or structured data. This is a great tool to retrieve, create, update, and delete within a database. With this tool you are able get all, get one, add to, remove from, and update within. It is a great app to stay orgainized, and minipulate data however you need. 
+https://github.com/vitafomin/challenge-18-social-network-api
+https://drive.google.com/file/d/1XrmqvCFf0Ljz8rmpMWZNKfFCOuqeKvMi/view
 
 
 ## Credits

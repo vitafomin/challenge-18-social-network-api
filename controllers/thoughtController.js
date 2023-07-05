@@ -79,7 +79,7 @@ module.exports = {
       console.log(req.body);
         // Pushing the created reaction into the thoughts model
       const newReaction = await Thought.findOneAndUpdate(
-        { username: req.body.username },
+        { _id: req.params.thoughtId },
         { $addToSet: { reactions: reaction } },
         { new: true }
       );
